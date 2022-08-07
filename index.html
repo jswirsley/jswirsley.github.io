@@ -13968,123 +13968,29 @@ a.anchor-link {
     </script>
     <!-- End of mathjax configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">election_tools</span> <span class="k">as</span> <span class="nn">et</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput ">
 
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="jp-Cell-inputWrapper"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="2021-Seattle-Citywide-Election-Results,-by-precinct">2021 Seattle Citywide Election Results, by precinct<a class="anchor-link" href="#2021-Seattle-Citywide-Election-Results,-by-precinct">&#182;</a></h1>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">PRECINCT_DATA</span><span class="o">=</span><span class="s2">&quot;Voting_Districts_of_King_County___votdst_area.geojson&quot;</span>
-<span class="n">PRECINCT_RESULTS</span><span class="o">=</span><span class="s1">&#39;2021-nov-final-precinct-results.csv&#39;</span>
-<span class="n">DISTRICT_ASSIGNMENTS</span><span class="o">=</span><span class="s1">&#39;commissioners-aug2.csv&#39;</span>
-<span class="n">SEATTLE_COUNCIL_DISTRICT_SHAPES</span> <span class="o">=</span> <span class="s1">&#39;commissioners-aug2.geojson&#39;</span>
-<span class="n">MISSING_PRECINCTS</span> <span class="o">=</span> <span class="s1">&#39;dra_missing_precincts.csv&#39;</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput ">
 
-<span class="n">CURRENT_DISTRICTS</span><span class="o">=</span><span class="s1">&#39;2015-districts.csv&#39;</span>
-<span class="n">CURRENT_DISTRICT_SHAPES</span> <span class="o">=</span> <span class="s1">&#39;Seattle_City_Council_Districts___sccdst_area.geojson&#39;</span>
-</pre></div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput ">
 
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results_by_precinct</span><span class="p">,</span> <span class="n">results_by_council_district</span><span class="p">,</span> <span class="n">seattle_cd_shapes</span> <span class="o">=</span> \
-    <span class="n">et</span><span class="o">.</span><span class="n">import_and_aggregate</span><span class="p">(</span><span class="n">precinct_shapes_file</span><span class="o">=</span><span class="n">PRECINCT_DATA</span><span class="p">,</span>
-                            <span class="n">district_shapes_file</span><span class="o">=</span><span class="n">SEATTLE_COUNCIL_DISTRICT_SHAPES</span><span class="p">,</span>
-                            <span class="n">precinct_results_file</span><span class="o">=</span><span class="n">PRECINCT_RESULTS</span><span class="p">,</span>
-                            <span class="n">districts_by_precinct_file</span><span class="o">=</span><span class="n">DISTRICT_ASSIGNMENTS</span><span class="p">,</span>
-                           <span class="n">dra_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                           <span class="n">missing_precinct_list</span><span class="o">=</span><span class="n">MISSING_PRECINCTS</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results_by_precinct_current</span><span class="p">,</span> <span class="n">results_by_council_district_current</span><span class="p">,</span> <span class="n">current_cd_shapes</span> <span class="o">=</span> \
-    <span class="n">et</span><span class="o">.</span><span class="n">import_and_aggregate</span><span class="p">(</span><span class="n">precinct_shapes_file</span><span class="o">=</span><span class="n">PRECINCT_DATA</span><span class="p">,</span>
-                            <span class="n">district_shapes_file</span><span class="o">=</span><span class="n">CURRENT_DISTRICT_SHAPES</span><span class="p">,</span>
-                            <span class="n">precinct_results_file</span><span class="o">=</span><span class="n">PRECINCT_RESULTS</span><span class="p">,</span>
-                            <span class="n">districts_by_precinct_file</span><span class="o">=</span><span class="n">CURRENT_DISTRICTS</span><span class="p">,</span>
-                            <span class="n">dra_data</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput ">
 
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="jp-Cell-inputWrapper"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="District-8-Results-Comparison">District 8 Results Comparison<a class="anchor-link" href="#District-8-Results-Comparison">&#182;</a></h2><h3 id="District-8,-New-districts">District 8, New districts<a class="anchor-link" href="#District-8,-New-districts">&#182;</a></h3>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d8_vote_share</span> <span class="o">=</span> <span class="n">et</span><span class="o">.</span><span class="n">candidate_vote_shares</span><span class="p">(</span><span class="n">results_by_district</span><span class="o">=</span><span class="n">results_by_council_district</span><span class="p">,</span>
-                                         <span class="n">candidates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Kenneth Wilson&#39;</span><span class="p">,</span><span class="s1">&#39;Teresa Mosqueda&#39;</span><span class="p">],</span>
-                                         <span class="n">election</span><span class="o">=</span><span class="s1">&#39;City of Seattle Council Position No. 8&#39;</span><span class="p">)</span>
-
-<span class="n">et</span><span class="o">.</span><span class="n">plot_winner</span><span class="p">(</span><span class="n">shapes</span><span class="o">=</span><span class="n">seattle_cd_shapes</span><span class="p">,</span> <span class="n">vote_share</span><span class="o">=</span><span class="n">d8_vote_share</span><span class="p">,</span> <span class="n">candidate_1</span><span class="o">=</span><span class="s1">&#39;Wilson&#39;</span><span class="p">,</span> <span class="n">candidate_2</span><span class="o">=</span><span class="s1">&#39;Mosqueda&#39;</span><span class="p">)</span>
-
-<span class="n">d8_vote_share</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
-
 
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
-
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
@@ -14178,10 +14084,6 @@ a.anchor-link {
 
 <div class="jp-OutputArea-child">
 
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
 
 
 <div class="jp-RenderedImage jp-OutputArea-output ">
@@ -14197,40 +14099,16 @@ a.anchor-link {
 </div>
 
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="jp-Cell-inputWrapper"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="District-8,-Old-Districts">District 8, Old Districts<a class="anchor-link" href="#District-8,-Old-Districts">&#182;</a></h3>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d8_vote_share_current</span> <span class="o">=</span> <span class="n">et</span><span class="o">.</span><span class="n">candidate_vote_shares</span><span class="p">(</span><span class="n">results_by_district</span><span class="o">=</span><span class="n">results_by_council_district_current</span><span class="p">,</span>
-                                         <span class="n">candidates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Kenneth Wilson&#39;</span><span class="p">,</span><span class="s1">&#39;Teresa Mosqueda&#39;</span><span class="p">],</span>
-                                         <span class="n">election</span><span class="o">=</span><span class="s1">&#39;City of Seattle Council Position No. 8&#39;</span><span class="p">)</span>
-
-<span class="n">et</span><span class="o">.</span><span class="n">plot_winner</span><span class="p">(</span><span class="n">shapes</span><span class="o">=</span><span class="n">current_cd_shapes</span><span class="p">,</span> <span class="n">vote_share</span><span class="o">=</span><span class="n">d8_vote_share_current</span><span class="p">,</span> <span class="n">candidate_1</span><span class="o">=</span><span class="s1">&#39;Wilson&#39;</span><span class="p">,</span> <span class="n">candidate_2</span><span class="o">=</span><span class="s1">&#39;Mosqueda&#39;</span><span class="p">)</span>
-
-<span class="n">d8_vote_share_current</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
-
 
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
-
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
@@ -14324,10 +14202,6 @@ a.anchor-link {
 
 <div class="jp-OutputArea-child">
 
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
 
 
 <div class="jp-RenderedImage jp-OutputArea-output ">
@@ -14343,35 +14217,16 @@ a.anchor-link {
 </div>
 
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="jp-Cell-inputWrapper"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="District-8-shift-(margin-of-victory/defeat-for-progressive,-as-percentage)">District 8 shift (margin of victory/defeat for progressive, as percentage)<a class="anchor-link" href="#District-8-shift-(margin-of-victory/defeat-for-progressive,-as-percentage)">&#182;</a></h3>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d8_diff</span> <span class="o">=</span> <span class="n">d8_vote_share</span><span class="p">[</span><span class="s1">&#39;margin&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">d8_vote_share_current</span><span class="p">[</span><span class="s1">&#39;margin&#39;</span><span class="p">]</span>
-<span class="n">d8_diff</span> <span class="o">*</span> <span class="mi">100</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
-
 
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
-
 
 
 
@@ -14393,65 +14248,21 @@ Name: margin, dtype: float64</pre>
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput ">
 
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="jp-Cell-inputWrapper"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="District-9-Results-Comparison">District 9 Results Comparison<a class="anchor-link" href="#District-9-Results-Comparison">&#182;</a></h2><h3 id="District-9,-New-districts">District 9, New districts<a class="anchor-link" href="#District-9,-New-districts">&#182;</a></h3>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d9_vote_share</span> <span class="o">=</span> <span class="n">et</span><span class="o">.</span><span class="n">candidate_vote_shares</span><span class="p">(</span><span class="n">results_by_district</span><span class="o">=</span><span class="n">results_by_council_district</span><span class="p">,</span>
-                                         <span class="n">candidates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Sara Nelson&#39;</span><span class="p">,</span><span class="s1">&#39;Nikkita Oliver&#39;</span><span class="p">],</span>
-                                         <span class="n">election</span><span class="o">=</span><span class="s1">&#39;City of Seattle Council Position No. 9&#39;</span><span class="p">)</span>
-</pre></div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput ">
 
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">et</span><span class="o">.</span><span class="n">plot_winner</span><span class="p">(</span><span class="n">shapes</span><span class="o">=</span><span class="n">seattle_cd_shapes</span><span class="p">,</span> <span class="n">vote_share</span><span class="o">=</span><span class="n">d9_vote_share</span><span class="p">,</span> <span class="n">candidate_1</span><span class="o">=</span><span class="s1">&#39;Nelson&#39;</span><span class="p">,</span> <span class="n">candidate_2</span><span class="o">=</span><span class="s1">&#39;Oliver&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
-
 
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
 
 
 
@@ -14468,40 +14279,16 @@ Name: margin, dtype: float64</pre>
 </div>
 
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="jp-Cell-inputWrapper"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="District-9,-Old-Districts">District 9, Old Districts<a class="anchor-link" href="#District-9,-Old-Districts">&#182;</a></h3>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d9_vote_share_current</span> <span class="o">=</span> <span class="n">et</span><span class="o">.</span><span class="n">candidate_vote_shares</span><span class="p">(</span><span class="n">results_by_district</span><span class="o">=</span><span class="n">results_by_council_district_current</span><span class="p">,</span>
-                                         <span class="n">candidates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Sara Nelson&#39;</span><span class="p">,</span><span class="s1">&#39;Nikkita Oliver&#39;</span><span class="p">],</span>
-                                         <span class="n">election</span><span class="o">=</span><span class="s1">&#39;City of Seattle Council Position No. 9&#39;</span><span class="p">)</span>
-
-<span class="n">et</span><span class="o">.</span><span class="n">plot_winner</span><span class="p">(</span><span class="n">shapes</span><span class="o">=</span><span class="n">current_cd_shapes</span><span class="p">,</span> <span class="n">vote_share</span><span class="o">=</span><span class="n">d9_vote_share_current</span><span class="p">,</span> <span class="n">candidate_1</span><span class="o">=</span><span class="s1">&#39;Nelson&#39;</span><span class="p">,</span> <span class="n">candidate_2</span><span class="o">=</span><span class="s1">&#39;Oliver&#39;</span><span class="p">)</span>
-
-<span class="n">d9_vote_share_current</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
-
 
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
-
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
@@ -14595,10 +14382,6 @@ Name: margin, dtype: float64</pre>
 
 <div class="jp-OutputArea-child">
 
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
 
 
 <div class="jp-RenderedImage jp-OutputArea-output ">
@@ -14614,47 +14397,28 @@ Name: margin, dtype: float64</pre>
 </div>
 
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="jp-Cell-inputWrapper"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="District-9-shift-(margin-of-victory/defeat-for-progressive,-as-percentage)">District 9 shift (margin of victory/defeat for progressive, as percentage)<a class="anchor-link" href="#District-9-shift-(margin-of-victory/defeat-for-progressive,-as-percentage)">&#182;</a></h3>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d9_diff</span> <span class="o">=</span> <span class="n">d8_vote_share</span><span class="p">[</span><span class="s1">&#39;margin&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">d8_vote_share_current</span><span class="p">[</span><span class="s1">&#39;margin&#39;</span><span class="p">]</span>
-<span class="n">d9_diff</span> <span class="o">*</span> <span class="mi">100</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
-
 
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
 
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[27]:</div>
-
-
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
 <pre>SeattleCouncilDistrict
-1.0    0.170038
-2.0   -0.355721
-3.0   -1.126776
-4.0   -0.470501
-5.0   -0.972417
-6.0   -5.109463
-7.0    4.584646
+1.0    0.188311
+2.0   -0.751516
+3.0   -1.673788
+4.0   -0.617530
+5.0   -0.662502
+6.0   -4.994517
+7.0    4.136745
 Name: margin, dtype: float64</pre>
 </div>
 
@@ -14665,37 +14429,16 @@ Name: margin, dtype: float64</pre>
 </div>
 
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="jp-Cell-inputWrapper"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="City-Attorney-Results-Comparison">City Attorney Results Comparison<a class="anchor-link" href="#City-Attorney-Results-Comparison">&#182;</a></h2><h3 id="City-Attorney,-New-districts">City Attorney, New districts<a class="anchor-link" href="#City-Attorney,-New-districts">&#182;</a></h3>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">atty_vote_share</span> <span class="o">=</span> <span class="n">et</span><span class="o">.</span><span class="n">candidate_vote_shares</span><span class="p">(</span><span class="n">results_by_district</span><span class="o">=</span><span class="n">results_by_council_district</span><span class="p">,</span>
-                                         <span class="n">candidates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ann Davison&#39;</span><span class="p">,</span><span class="s1">&#39;Nicole Thomas-Kennedy&#39;</span><span class="p">],</span>
-                                         <span class="n">election</span><span class="o">=</span><span class="s1">&#39;City of Seattle City Attorney&#39;</span><span class="p">)</span>
-<span class="n">atty_vote_share</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
-
 
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
-
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
@@ -14791,30 +14534,13 @@ Name: margin, dtype: float64</pre>
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">et</span><span class="o">.</span><span class="n">plot_winner</span><span class="p">(</span><span class="n">shapes</span><span class="o">=</span><span class="n">seattle_cd_shapes</span><span class="p">,</span> <span class="n">vote_share</span><span class="o">=</span><span class="n">atty_vote_share</span><span class="p">,</span> <span class="n">candidate_1</span><span class="o">=</span><span class="s1">&#39;Davison&#39;</span><span class="p">,</span> <span class="n">candidate_2</span><span class="o">=</span><span class="s1">&#39;Thomas-Kennedy&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
-
 
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
 
 
 
@@ -14831,40 +14557,16 @@ Name: margin, dtype: float64</pre>
 </div>
 
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="jp-Cell-inputWrapper"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="City-Attorney,-Old-Districts">City Attorney, Old Districts<a class="anchor-link" href="#City-Attorney,-Old-Districts">&#182;</a></h3>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">atty_vote_share_current</span> <span class="o">=</span> <span class="n">et</span><span class="o">.</span><span class="n">candidate_vote_shares</span><span class="p">(</span><span class="n">results_by_district</span><span class="o">=</span><span class="n">results_by_council_district_current</span><span class="p">,</span>
-                                         <span class="n">candidates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ann Davison&#39;</span><span class="p">,</span><span class="s1">&#39;Nicole Thomas-Kennedy&#39;</span><span class="p">],</span>
-                                         <span class="n">election</span><span class="o">=</span><span class="s1">&#39;City of Seattle City Attorney&#39;</span><span class="p">)</span>
-
-<span class="n">et</span><span class="o">.</span><span class="n">plot_winner</span><span class="p">(</span><span class="n">shapes</span><span class="o">=</span><span class="n">current_cd_shapes</span><span class="p">,</span> <span class="n">vote_share</span><span class="o">=</span><span class="n">d9_vote_share_current</span><span class="p">,</span> <span class="n">candidate_1</span><span class="o">=</span><span class="s1">&#39;Davison&#39;</span><span class="p">,</span> <span class="n">candidate_2</span><span class="o">=</span><span class="s1">&#39;Thomas-Kennedy&#39;</span><span class="p">)</span>
-
-<span class="n">atty_vote_share_current</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
-
 
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
-
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
@@ -14958,10 +14660,6 @@ Name: margin, dtype: float64</pre>
 
 <div class="jp-OutputArea-child">
 
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
 
 
 <div class="jp-RenderedImage jp-OutputArea-output ">
@@ -14977,35 +14675,16 @@ Name: margin, dtype: float64</pre>
 </div>
 
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="jp-Cell-inputWrapper"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="City-Attorney-shift-(margin-of-victory/defeat-for-progressive,-as-percentage)">City Attorney shift (margin of victory/defeat for progressive, as percentage)<a class="anchor-link" href="#City-Attorney-shift-(margin-of-victory/defeat-for-progressive,-as-percentage)">&#182;</a></h3>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">atty_diff</span> <span class="o">=</span> <span class="n">atty_vote_share</span><span class="p">[</span><span class="s1">&#39;margin&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">atty_vote_share_current</span><span class="p">[</span><span class="s1">&#39;margin&#39;</span><span class="p">]</span>
-<span class="n">atty_diff</span> <span class="o">*</span> <span class="mi">100</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
-
 
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
-
 
 
 
@@ -15028,37 +14707,16 @@ Name: margin, dtype: float64</pre>
 </div>
 
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="jp-Cell-inputWrapper"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Mayor-Results-Comparison">Mayor Results Comparison<a class="anchor-link" href="#Mayor-Results-Comparison">&#182;</a></h2><h3 id="Mayor,-New-districts">Mayor, New districts<a class="anchor-link" href="#Mayor,-New-districts">&#182;</a></h3>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mayor_vote_share</span> <span class="o">=</span> <span class="n">et</span><span class="o">.</span><span class="n">candidate_vote_shares</span><span class="p">(</span><span class="n">results_by_district</span><span class="o">=</span><span class="n">results_by_council_district</span><span class="p">,</span>
-                                         <span class="n">candidates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Bruce Harrell&#39;</span><span class="p">,</span><span class="s1">&#39;M. Lorena González&#39;</span><span class="p">],</span>
-                                         <span class="n">election</span><span class="o">=</span><span class="s1">&#39;City of Seattle Mayor&#39;</span><span class="p">)</span>
-<span class="n">mayor_vote_share</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
-
 
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
-
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
@@ -15154,30 +14812,13 @@ Name: margin, dtype: float64</pre>
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">et</span><span class="o">.</span><span class="n">plot_winner</span><span class="p">(</span><span class="n">shapes</span><span class="o">=</span><span class="n">seattle_cd_shapes</span><span class="p">,</span> <span class="n">vote_share</span><span class="o">=</span><span class="n">mayor_vote_share</span><span class="p">,</span> <span class="n">candidate_1</span><span class="o">=</span><span class="s1">&#39;Harrell&#39;</span><span class="p">,</span> <span class="n">candidate_2</span><span class="o">=</span><span class="s1">&#39;González&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
-
 
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
 
 
 
@@ -15194,39 +14835,16 @@ Name: margin, dtype: float64</pre>
 </div>
 
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="jp-Cell-inputWrapper"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Mayor,-Old-Districts">Mayor, Old Districts<a class="anchor-link" href="#Mayor,-Old-Districts">&#182;</a></h3>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mayor_vote_share_current</span> <span class="o">=</span> <span class="n">et</span><span class="o">.</span><span class="n">candidate_vote_shares</span><span class="p">(</span><span class="n">results_by_district</span><span class="o">=</span><span class="n">results_by_council_district_current</span><span class="p">,</span>
-                                         <span class="n">candidates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Bruce Harrell&#39;</span><span class="p">,</span><span class="s1">&#39;M. Lorena González&#39;</span><span class="p">],</span>
-                                         <span class="n">election</span><span class="o">=</span><span class="s1">&#39;City of Seattle Mayor&#39;</span><span class="p">)</span>
-<span class="n">et</span><span class="o">.</span><span class="n">plot_winner</span><span class="p">(</span><span class="n">shapes</span><span class="o">=</span><span class="n">current_cd_shapes</span><span class="p">,</span> <span class="n">vote_share</span><span class="o">=</span><span class="n">mayor_vote_share_current</span><span class="p">,</span> <span class="n">candidate_1</span><span class="o">=</span><span class="s1">&#39;Harrell&#39;</span><span class="p">,</span> <span class="n">candidate_2</span><span class="o">=</span><span class="s1">&#39;González&#39;</span><span class="p">)</span>
-
-<span class="n">mayor_vote_share_current</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
-
 
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
-
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
@@ -15320,10 +14938,6 @@ Name: margin, dtype: float64</pre>
 
 <div class="jp-OutputArea-child">
 
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
 
 
 <div class="jp-RenderedImage jp-OutputArea-output ">
@@ -15339,35 +14953,16 @@ Name: margin, dtype: float64</pre>
 </div>
 
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="jp-Cell-inputWrapper"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Mayor-shift-(margin-of-victory/defeat-for-progressive,-as-percentage)">Mayor shift (margin of victory/defeat for progressive, as percentage)<a class="anchor-link" href="#Mayor-shift-(margin-of-victory/defeat-for-progressive,-as-percentage)">&#182;</a></h3>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mayor_diff</span> <span class="o">=</span> <span class="n">mayor_vote_share</span><span class="p">[</span><span class="s1">&#39;margin&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">mayor_vote_share_current</span><span class="p">[</span><span class="s1">&#39;margin&#39;</span><span class="p">]</span>
-<span class="n">mayor_diff</span> <span class="o">*</span> <span class="mi">100</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
-
 
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[33]:</div>
-
 
 
 
@@ -15390,40 +14985,16 @@ Name: margin, dtype: float64</pre>
 </div>
 
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="jp-Cell-inputWrapper"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Overall-Winners">Overall Winners<a class="anchor-link" href="#Overall-Winners">&#182;</a></h2>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[88]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">new_district_summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">d8_vote_share</span><span class="p">[[</span><span class="s1">&#39;winner&#39;</span><span class="p">,</span><span class="s1">&#39;margin&#39;</span><span class="p">]],</span> 
-                                  <span class="n">d9_vote_share</span><span class="p">[[</span><span class="s1">&#39;winner&#39;</span><span class="p">,</span><span class="s1">&#39;margin&#39;</span><span class="p">]],</span> 
-                                  <span class="n">atty_vote_share</span><span class="p">[[</span><span class="s1">&#39;winner&#39;</span><span class="p">,</span><span class="s1">&#39;margin&#39;</span><span class="p">]],</span>
-                                  <span class="n">mayor_vote_share</span><span class="p">[[</span><span class="s1">&#39;winner&#39;</span><span class="p">,</span><span class="s1">&#39;margin&#39;</span><span class="p">]]],</span>
-                                <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                                <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;D8&#39;</span><span class="p">,</span> <span class="s1">&#39;D9&#39;</span><span class="p">,</span> <span class="s1">&#39;Atty&#39;</span><span class="p">,</span> <span class="s1">&#39;Mayor&#39;</span><span class="p">])</span>
-<span class="n">new_district_summary</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
-
 
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[88]:</div>
-
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
@@ -15566,36 +15137,13 @@ Name: margin, dtype: float64</pre>
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[54]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">current_district_summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">d8_vote_share_current</span><span class="p">[[</span><span class="s1">&#39;winner&#39;</span><span class="p">,</span><span class="s1">&#39;margin&#39;</span><span class="p">]],</span> 
-                                  <span class="n">d9_vote_share_current</span><span class="p">[[</span><span class="s1">&#39;winner&#39;</span><span class="p">,</span><span class="s1">&#39;margin&#39;</span><span class="p">]],</span> 
-                                  <span class="n">atty_vote_share_current</span><span class="p">[[</span><span class="s1">&#39;winner&#39;</span><span class="p">,</span><span class="s1">&#39;margin&#39;</span><span class="p">]],</span>
-                                  <span class="n">mayor_vote_share_current</span><span class="p">[[</span><span class="s1">&#39;winner&#39;</span><span class="p">,</span><span class="s1">&#39;margin&#39;</span><span class="p">]]],</span>
-                                <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                                <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;D8&#39;</span><span class="p">,</span> <span class="s1">&#39;D9&#39;</span><span class="p">,</span> <span class="s1">&#39;Atty&#39;</span><span class="p">,</span> <span class="s1">&#39;Mayor&#39;</span><span class="p">])</span>
-<span class="n">current_district_summary</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
-
 
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[54]:</div>
-
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
@@ -15739,34 +15287,16 @@ Name: margin, dtype: float64</pre>
 </div>
 
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="jp-Cell-inputWrapper"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Overall-Shifts-(Difference-in-percent-margin-of-victory-for-progressive-candidate)">Overall Shifts (Difference in percent margin of victory for progressive candidate)<a class="anchor-link" href="#Overall-Shifts-(Difference-in-percent-margin-of-victory-for-progressive-candidate)">&#182;</a></h2>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[42]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">d8_diff</span><span class="p">,</span> <span class="n">d9_diff</span><span class="p">,</span> <span class="n">atty_diff</span><span class="p">,</span> <span class="n">mayor_diff</span><span class="p">],</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;D8&#39;</span><span class="p">,</span> <span class="s1">&#39;D9&#39;</span><span class="p">,</span> <span class="s1">&#39;Atty&#39;</span><span class="p">,</span> <span class="s1">&#39;Mayor&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
-
 
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[42]:</div>
-
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
@@ -15805,49 +15335,49 @@ Name: margin, dtype: float64</pre>
     <tr>
       <th>1.0</th>
       <td>0.17</td>
-      <td>0.17</td>
+      <td>0.19</td>
       <td>0.27</td>
       <td>0.46</td>
     </tr>
     <tr>
       <th>2.0</th>
       <td>-0.36</td>
-      <td>-0.36</td>
+      <td>-0.75</td>
       <td>-0.71</td>
       <td>-0.94</td>
     </tr>
     <tr>
       <th>3.0</th>
       <td>-1.13</td>
-      <td>-1.13</td>
+      <td>-1.67</td>
       <td>-1.68</td>
       <td>-1.14</td>
     </tr>
     <tr>
       <th>4.0</th>
       <td>-0.47</td>
-      <td>-0.47</td>
+      <td>-0.62</td>
       <td>-0.96</td>
       <td>-1.11</td>
     </tr>
     <tr>
       <th>5.0</th>
       <td>-0.97</td>
-      <td>-0.97</td>
+      <td>-0.66</td>
       <td>-0.37</td>
       <td>-0.11</td>
     </tr>
     <tr>
       <th>6.0</th>
       <td>-5.11</td>
-      <td>-5.11</td>
+      <td>-4.99</td>
       <td>-5.09</td>
       <td>-5.05</td>
     </tr>
     <tr>
       <th>7.0</th>
       <td>4.58</td>
-      <td>4.58</td>
+      <td>4.14</td>
       <td>4.85</td>
       <td>4.33</td>
     </tr>
@@ -15862,19 +15392,7 @@ Name: margin, dtype: float64</pre>
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput ">
 
 </div>
 </body>
